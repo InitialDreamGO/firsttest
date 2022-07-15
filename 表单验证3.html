@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="post" name="test">
+        <input type="text" oninput="checkit(this)" required pattern="^\d{4}$" placeholder="请输入代码">
+        <input type="submit" value="验证">
+    </form>
+    <script>
+        function  checkit(obj){
+            console.log(obj.validity);
+            var it=obj.validity;
+            if(true === it.valueMissing){
+                obj.setCustomValidity("不能为空!");
+            }else{
+                if(true===it.patternMismatch){
+                    obj.setCustomValidity("输入必须为4个数字!");
+                }else{
+                    obj.setCustomValidity("");
+                }
+            }
+        }   
+    </script>
+</body>
+</html>
